@@ -26,7 +26,7 @@ public class Program {
 	            String input = sc.nextLine();
 
 	            if (input.equalsIgnoreCase("exit")) {
-	                break; // Saída do loop se 'exit' for inserido
+	                break; // Saída do loop se 'exit' for inserido 
 	            }
 
 	            Long codProduct = null;
@@ -37,13 +37,13 @@ public class Program {
 	                continue; // Volta ao início do loop para novo input
 	            }
 
-	            st = conn.prepareStatement("SELECT PRODUTO, DESC_PRODUTO, FABRICANTE FROM PRODUTOS WHERE PRODUTO = ?");
+	            st = conn.prepareStatement("SELECT DESC_PRODUTO, FABRICANTE FROM PRODUTOS WHERE PRODUTO = ?");
 	            st.setLong(1, codProduct);
 
 	            rs = st.executeQuery();
 
 	            if (rs.next()) {
-	                System.out.println(rs.getLong("PRODUTO") + ", " + rs.getString("DESC_PRODUTO") + ", " + rs.getString("FABRICANTE"));
+	                System.out.println(rs.getString("DESC_PRODUTO") + ", " + rs.getString("FABRICANTE"));
 	            } else {
 	                System.out.println("Nenhum produto encontrado com o código informado.");
 	            }
